@@ -3,13 +3,13 @@ import { useMemo, useState } from "react";
 import { occasions, products } from "@/lib/products";
 import { ProductCard } from "@/components/product-card";
 
-type ShopSearch = { category?: string; occasion?: string; q?: string };
+type ShopSearch = { category?: string | undefined; occasion?: string | undefined; q?: string | undefined };
 
 export const Route = createFileRoute("/shop")({
   validateSearch: (s: Record<string, unknown>): ShopSearch => ({
-    category: typeof s.category === "string" ? s.category : undefined,
-    occasion: typeof s.occasion === "string" ? s.occasion : undefined,
-    q: typeof s.q === "string" ? s.q : undefined,
+    category: typeof s["category"] === "string" ? (s["category"] as string) : undefined,
+    occasion: typeof s["occasion"] === "string" ? (s["occasion"] as string) : undefined,
+    q: typeof s["q"] === "string" ? (s["q"] as string) : undefined,
   }),
   head: () => ({
     meta: [

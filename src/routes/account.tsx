@@ -14,10 +14,12 @@ export const Route = createFileRoute("/account")({
   component: Account,
 });
 
-const orders = [
-  { id: "JC-482910", date: "18 Aug 2026", status: "Delivered", items: [products[0], products[3]] },
-  { id: "JC-477201", date: "2 Jul 2026", status: "Delivered", items: [products[2]] },
-  { id: "JC-491044", date: "1 Sep 2026", status: "In transit", items: [products[5]] },
+type Order = { id: string; date: string; status: string; items: typeof products };
+
+const orders: Order[] = [
+  { id: "JC-482910", date: "18 Aug 2026", status: "Delivered", items: [products[0]!, products[3]!] },
+  { id: "JC-477201", date: "2 Jul 2026", status: "Delivered", items: [products[2]!] },
+  { id: "JC-491044", date: "1 Sep 2026", status: "In transit", items: [products[5]!] },
 ];
 
 const tabs = ["Orders", "Addresses", "Saved sizes"] as const;
